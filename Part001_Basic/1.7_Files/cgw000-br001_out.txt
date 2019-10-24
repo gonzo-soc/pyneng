@@ -1,0 +1,42 @@
+!
+! No configuration change since last restart
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname gw001-hq
+!
+boot-start-marker
+boot-end-marker
+!
+logging buffered 4096 debugging
+!
+no aaa new-model
+memory-size iomem 5
+clock timezone SAKH 11
+no ip icmp rate-limit unreachable
+ip cef
+!
+!
+no ip dhcp use vrf connected
+ip dhcp excluded-address 192.168.10.1 192.168.10.50
+ip dhcp excluded-address 192.168.11.1 192.168.11.50
+!
+ip dhcp pool IT_DHCP_POOL
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.1
+dns-server 188.113.150.1
+domain-name icnd000101.ciscolabs.local
+lease 3
+!
+ip dhcp pool ACC_DHCP_POOL
+network 192.168.11.0 255.255.255.0
+domain-name icnd000101.ciscolabs.local
+dns-server 188.113.150.1
+default-router 192.168.11.1
+lease 3
+!
+!
+interface Fa0/0

@@ -1,0 +1,7 @@
+# ignore all logs
+*.log
+*.swp
+*.private
+*.key
+.DS_Store
+tmp
