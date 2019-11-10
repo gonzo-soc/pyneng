@@ -1,7 +1,12 @@
-import pytest
-import task_11_1
+#! /usr/bin/env python3.7
+
 import sys
 sys.path.append('..')
+sys.path.append('.')
+
+import pytest
+import task_11_1
+
 
 from common_functions import check_function_exists, check_function_params
 
@@ -51,4 +56,3 @@ def test_function_return_value():
     assert return_value != None, "Функция ничего не возвращает"
     assert type(return_value) == dict, "Функция должна возвращать словарь"
     assert return_value == correct_return_value, "Функция возвращает неправильное значение"
-

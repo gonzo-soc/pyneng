@@ -1,3 +1,5 @@
+#! /usr/bin/env python3.7
+
 # -*- coding: utf-8 -*-
 '''
 Задание 11.1
@@ -28,3 +30,26 @@ R6           Fa 0/2          143           R S I           2811       Fa 0/0
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 '''
 
+
+def parse_cdp_neighbors(command_output):
+    print(command_output)
+
+    si = None
+    cdp_dev_report_list = None
+    cdp_dict = {}
+
+    command_output_str = "".join(command_output)
+    si = command_output_str.find('Device ID')
+    dev_name = command_output_str.split("\n")[0].split(">")[0]
+    if si is not None:
+        cdp_dev_report_list = command_output_str[si::].split("\n")[1::]
+        for line in cdp_dev_report_list:
+            neighb_line = [x for x in line.split(" ") if x != " " and x]
+            neighb_and_loc_int = neighb_line[:3]
+            neighb_int = neighb_line[-2:]
+
+            cdp_key = (dev_name, neighb_and_loc_int[1] + neighb_and_loc_int[2])
+            cdp_v = (neighb_and_loc_int[0], neighb_int[0] + neighb_int[1])
+            cdp_dict[cdp_key] = cdp_v
+
+    return cdp_dict
