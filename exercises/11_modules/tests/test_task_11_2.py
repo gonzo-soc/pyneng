@@ -13,7 +13,7 @@ def test_function_created():
 
 def test_function_params():
     check_function_params(function=task_11_2.create_network_map,
-                          param_count=1, param_names=['filenames'])
+                          param_count=1, param_names=['cfg_files'])
 
 
 def test_function_return_value():
@@ -41,4 +41,3 @@ def test_function_return_value():
     assert len(return_value) == len(correct_return_value), "В словаре, который описывает топологию есть дублирующиеся линки"
     unified_return_value = unify_topology_dict(return_value)
     assert unified_return_value == correct_return_value, "Функция возвращает неправильное значение"
-
