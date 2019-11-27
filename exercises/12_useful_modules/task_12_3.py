@@ -1,3 +1,7 @@
+#! /usr/bin/env python3.7
+
+from tabulate import tabulate
+
 # -*- coding: utf-8 -*-
 '''
 Задание 12.3
@@ -23,3 +27,31 @@ Reachable    Unreachable
 
 Для этого задания нет тестов
 '''
+
+
+def print_ip_table(reachable_ip_addrs, unreachable_ip_addrs):
+    print(tabulate(list(zip(reachable_ip_addrs, unreachable_ip_addrs)),
+                   headers=['Reachable', 'Unreachable']))
+
+
+def main():
+    reachable_ip_addrs = [
+        '192.168.0.1',
+        '192.168.0.2',
+        '192.168.0.3',
+        '192.168.0.4',
+        '192.168.0.5'
+    ]
+    unreachable_ip_addrs = [
+        '172.16.0.1',
+        '172.16.0.2',
+        '172.16.0.3',
+        '172.16.0.4',
+        '172.16.0.5'
+    ]
+
+    print_ip_table(reachable_ip_addrs, unreachable_ip_addrs)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,3 +1,5 @@
+#! /usr/bin/env python3.7
+
 import pytest
 import task_12_1
 import sys
@@ -20,4 +22,3 @@ def test_function_return_value():
     assert return_value != None, "Функция ничего не возвращает"
     assert type(return_value) == tuple and all(type(item)==list for item in return_value), "Функция должна возвращать кортеж с двумя списками"
     assert return_value == correct_return_value, "Функция возвращает неправильное значение"
-
